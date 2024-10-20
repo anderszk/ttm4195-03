@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/_BilboydLeasing.sol": "BilboydCarLeasing"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/_BilboydLeasing.sol": {
+			"keccak256": "0x2f480266f0ea51384e44cc9dff41b435405254fb797fb2b875dec4460c177666",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://25043ec962f34c498723584e7e67871d02470150188f49fe0695b41b164a145f",
+				"dweb:/ipfs/QmWE1RfgXXkzDvNxHRgUMkwhX9FjYUQp7D9JapNwxbPSq7"
+			]
+		}
+	},
+	"version": 1
+}
