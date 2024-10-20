@@ -33,11 +33,11 @@
 	},
 	"sources": {
 		"contracts/_BilboydLeasing.sol": {
-			"keccak256": "0x2f480266f0ea51384e44cc9dff41b435405254fb797fb2b875dec4460c177666",
+			"keccak256": "0x2382b8d43fdf9a9a87c1e5f81bfbb83ba075e00476bdf1550b971fc3142342f0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://25043ec962f34c498723584e7e67871d02470150188f49fe0695b41b164a145f",
-				"dweb:/ipfs/QmWE1RfgXXkzDvNxHRgUMkwhX9FjYUQp7D9JapNwxbPSq7"
+				"bzz-raw://814d192fcdb09b9a41f29b62e552551e1bb9a69e8ec9420a3be4a36bdf64cb2b",
+				"dweb:/ipfs/QmYcQ2jq9pmQWRG6D8YhBL9fHGdy7AQeQCagr1Wdju23Qa"
 			]
 		}
 	},
