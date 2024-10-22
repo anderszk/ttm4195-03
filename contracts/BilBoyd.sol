@@ -7,8 +7,8 @@ import "@openzeppelin/contracts/access/Ownable.sol" as OwnableContract;
 
 contract Bilboyd_CarLeasing is ERC721Contract.ERC721, OwnableContract.Ownable {
     struct Car {
-        string model;
-        string colour;
+        bytes32 model; // Changed to bytes32 to limit size
+        bytes32 colour; // Changed to bytes32 to limit size
         uint256 yearOfMatriculation;
         uint256 originalValue;
         uint256 currentMileage;
@@ -35,15 +35,21 @@ contract Bilboyd_CarLeasing is ERC721Contract.ERC721, OwnableContract.Ownable {
         OwnableContract.Ownable(msg.sender) // Pass the initial owner to Ownable constructor
     {}
 
+    // Function to check if a token exists
+    function _exists(uint256 tokenId) internal view returns (bool) {
+        return _carDetails[tokenId].yearOfMatriculation != 0; // Check if the car details are initialized
+    }
+
     // Function to register a new car
     function registerCar(
         uint256 tokenId,
-        string memory model,
-        string memory colour,
+        bytes32 model,
+        bytes32 colour,
         uint256 yearOfMatriculation,
         uint256 originalValue,
         uint256 currentMileage
     ) external onlyOwner {
+        require(!_exists(tokenId), "Car already registered"); // Ensure the car is not already registered
         _carDetails[tokenId] = Car(model, colour, yearOfMatriculation, originalValue, currentMileage);
         _mint(msg.sender, tokenId); // Mint the token to the owner
     }
@@ -81,7 +87,7 @@ contract Bilboyd_CarLeasing is ERC721Contract.ERC721, OwnableContract.Ownable {
         uint256 currentMileage = _carDetails[carTokenId].currentMileage;
 
         uint256 monthlyQuota = computeMonthlyQuota(originalValue, currentMileage, driverExperienceYears, mileageCap, contractDuration);
-        uint256 dealId = uint256(keccak256(abi.encodePacked(carTokenId, msg.sender, block.timestamp))); // Unique deal ID
+        uint256 dealId = uint256(keccak256(abi.encodePacked(carTokenId, msg.sender, block.number))); // Unique deal ID
 
         uint256 downPayment = monthlyQuota * 3; // Down payment is three times the monthly quota
 
@@ -91,7 +97,7 @@ contract Bilboyd_CarLeasing is ERC721Contract.ERC721, OwnableContract.Ownable {
             carTokenId: carTokenId,
             downPayment: downPayment,
             monthlyQuota: monthlyQuota,
-            leaseEndTime: block.timestamp + (contractDuration * 30 days), // Set lease end time based on duration in days
+            leaseEndTime: block.number + (contractDuration * 30 days), // Set lease end time based on duration in days
             leasingContractor: msg.sender,
             driverExperienceYears: driverExperienceYears,
             mileageCap: mileageCap,
@@ -103,15 +109,15 @@ contract Bilboyd_CarLeasing is ERC721Contract.ERC721, OwnableContract.Ownable {
 
     // Function to check if a car exists based on token ID
     function carExists(uint256 carTokenId) internal view returns (bool) {
-        return bytes(_carDetails[carTokenId].model).length > 0; // Checks if the car has been registered by checking the model name
-    }
+    return _carDetails[carTokenId].model != bytes32(0); // Checks if the car has been registered by checking if the model is not the default value
+}
 
     // Function to terminate the leasing contract
     function terminateContract(uint256 dealId) public {
         LeasingDeal storage deal = leasingDeals[dealId];
 
         require(msg.sender == deal.leasingContractor, "Only the leasing contractor can terminate the contract"); // Only the contractor can terminate
-        require(block.timestamp >= deal.leaseEndTime, "Lease is still active"); // Ensure lease is ended
+        require(block.number >= deal.leaseEndTime, "Lease is still active"); // Ensure lease is ended
 
         delete leasingDeals[dealId]; // Remove the leasing deal
     }

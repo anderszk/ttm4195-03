@@ -401,14 +401,14 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "model",
-						"type": "string"
+						"type": "bytes32"
 					},
 					{
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "colour",
-						"type": "string"
+						"type": "bytes32"
 					},
 					{
 						"internalType": "uint256",
@@ -951,11 +951,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0x5317b8b015d658124c2ee6f33ff5efb8d9c716125b925c60147920db55ea3e74",
+			"keccak256": "0x3879dbbc7203983c4de6ce685a3fa5b0c6863d4653133c148759965bd824a213",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ea1e4463d9a8decff663c4bd990736e942ffa1923d9fff369e4a70860de37568",
-				"dweb:/ipfs/QmYU5Je6NcKUoApPcLNnX223kGsLTXEvruJx2JaH5q66YK"
+				"bzz-raw://41bb9a2ef944fc15a2ceb0d2c34b14e3ff5ba3593a0911f6aab89029492195ec",
+				"dweb:/ipfs/QmdphQGyvHT5uCDnonPHwBm3CvAqyPiihnKGFCgtQ9DySi"
 			]
 		}
 	},
