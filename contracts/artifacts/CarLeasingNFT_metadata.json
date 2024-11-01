@@ -1,0 +1,361 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ownerAddress",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "driverExperienceYears",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mileageCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contractDurationMonths",
+						"type": "uint256"
+					}
+				],
+				"name": "computeMonthlyQuota",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "exists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCarDetails",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "model",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "registrationYear",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "originalValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentMileage",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "model",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "registrationYear",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "originalValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentMileage",
+						"type": "uint256"
+					}
+				],
+				"name": "mintCar",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"balanceOf(address)": {
+					"params": {
+						"ownerAddress": "- The address to be checked"
+					},
+					"returns": {
+						"_0": "balance of the address"
+					}
+				},
+				"computeMonthlyQuota(uint256,uint256,uint256,uint256)": {
+					"params": {
+						"contractDurationMonths": "- the duration of the contract in months",
+						"driverExperienceYears": "- the years of driving experience of the leaser in years",
+						"mileageCap": "- the milage cap specified in the contract "
+					},
+					"returns": {
+						"_0": "A quota calculated from the input params"
+					}
+				},
+				"exists(uint256)": {
+					"returns": {
+						"_0": "true if exists, else dfalse"
+					}
+				},
+				"getCarDetails(uint256)": {
+					"params": {
+						"tokenId": "- The token ID the car details are to be fetched from"
+					}
+				},
+				"mintCar(address,string,string,uint256,uint256,uint256)": {
+					"params": {
+						"color": "- The color of the car",
+						"currentMileage": "- The current milage of the car",
+						"model": "- The car model",
+						"originalValue": "- The original car value at production",
+						"registrationYear": "- The year the car was registrered",
+						"to": "- The address th car is to be minted"
+					},
+					"returns": {
+						"_0": "A quota calculated from the input params"
+					}
+				},
+				"name()": {
+					"returns": {
+						"_0": "the token name"
+					}
+				},
+				"ownerOf(uint256)": {
+					"params": {
+						"tokenId": "- The token ID the address is to be found"
+					},
+					"returns": {
+						"_0": "ownerAddres of the given input"
+					}
+				},
+				"symbol()": {
+					"returns": {
+						"_0": "the token symbol"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"balanceOf(address)": {
+					"notice": "Function to get the balance of a given address"
+				},
+				"computeMonthlyQuota(uint256,uint256,uint256,uint256)": {
+					"notice": "Calculates baseQuota equalling to 2% of original car value "
+				},
+				"exists(uint256)": {
+					"notice": "Public function to check if a token exists"
+				},
+				"getCarDetails(uint256)": {
+					"notice": "Gets cardetails from a tokenID"
+				},
+				"mintCar(address,string,string,uint256,uint256,uint256)": {
+					"notice": "Mint a new car NFT (only callable by the contract owner)"
+				},
+				"name()": {
+					"notice": "Function to get the token name"
+				},
+				"ownerOf(uint256)": {
+					"notice": "Function to get the owner of a token ID"
+				},
+				"symbol()": {
+					"notice": "Function to get the token symbol"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/_BilboydLeasing.sol": "CarLeasingNFT"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/_BilboydLeasing.sol": {
+			"keccak256": "0x10297e43206a2fa30c3406d7dd87ebc21f52f614c1bd1f62807f41a7723e0b6b",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://44519150ec14d8c946295a66ad070c45b64d77cd67c04ce6a69b388b6d4c62ce",
+				"dweb:/ipfs/QmPXwp64NTnPAkYAMZVZcv1NTKTVKb41JYwFayD3e3XXrj"
+			]
+		}
+	},
+	"version": 1
+}
