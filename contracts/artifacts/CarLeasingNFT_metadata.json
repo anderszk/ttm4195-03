@@ -303,6 +303,45 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "driverExperience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mileageCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contractDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "estimatedMileage",
+						"type": "uint256"
+					}
+				],
+				"name": "computeMonthlyQuotaForProposal",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_model",
 						"type": "string"
@@ -914,11 +953,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0x2e21fa1c67fad83016eeebd7d1dd9a15dc1cdbf1e8a0530bfd2eb8d7df92164a",
+			"keccak256": "0x35cc9520d704f6c8cda99952afb6a0a38e884278fdc0ded9710479fb456bacf1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6fd71e6724f42bbfb8aaea19c1d79b2d656a07bfb4fa66cd96421f0573c06838",
-				"dweb:/ipfs/QmWUXPxBPkHZfzL4koMD73NaCqexpL4Y6cmD2rGFhUYua9"
+				"bzz-raw://b9ed609cae475ef26dab923e51735f7dc9796787167a11b831daf9458a7e25d3",
+				"dweb:/ipfs/QmdNwhMuMKEQnD4eJ9aU7dEzUiD78GsyzYuazYpFUdWuY6"
 			]
 		}
 	},

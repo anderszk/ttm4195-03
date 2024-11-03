@@ -44,6 +44,48 @@ contract CarLeasingNFT is ERC721, Ownable {
         return newCarId;
     }
 
+function computeMonthlyQuotaForProposal(
+    uint256 tokenId,
+    uint256 driverExperience,
+    uint256 mileageCap,
+    uint256 contractDuration,
+    uint256 estimatedMileage // New parameter to estimate the mileage for the contract
+) public view returns (uint256) {
+    require(_ownerOf(tokenId) != address(0), "Token ID does not exist");
+
+    Car memory car = getCarDetails(tokenId);
+
+    // Base monthly quota is a percentage of the original car value
+    uint256 baseQuota = car.originalValue / 100; // 1% of original value
+
+    // Define a cost per mile over the mileage cap
+    uint256 costPerMileOverCap = 0.1 ether; // Example: 0.1 ether per mile over the cap
+
+    // Calculate mileage cost if the estimated mileage exceeds the mileage cap
+    uint256 mileageCost = 0;
+    if (estimatedMileage > mileageCap) {
+        uint256 excessMileage = estimatedMileage - mileageCap;
+        mileageCost = excessMileage * costPerMileOverCap; // Total cost for exceeding mileage
+    }
+
+    // Discount based on driver's experience
+    uint256 experienceDiscount = (driverExperience * baseQuota) / 100; // 1% discount per year
+
+    // Adjustment based on contract duration
+    uint256 durationDiscount = 0;
+    if (contractDuration >= 36) {
+        durationDiscount = (baseQuota * 5) / 100; // 5% discount
+    } else if (contractDuration >= 24) {
+        durationDiscount = (baseQuota * 3) / 100; // 3% discount
+    }
+
+    // Calculate the final monthly quota
+    uint256 monthlyQuota = baseQuota + mileageCost - experienceDiscount - durationDiscount;
+
+    return monthlyQuota;
+}
+
+
     // Function to check if the car exists using ownerOf
 
 
