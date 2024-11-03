@@ -58,6 +58,7 @@ contract Bilboyd_CarLeasing is ERC721, Ownable {
         require(carDetails[carId].originalValue > 0, "Car does not exist");
         require(msg.value == monthlyQuota * 4, "Incorrect payment amount"); // Ensures the driver sends the exact payment required (3 monthly quotas as a down payment + 1 monthly quota).
 
+        
         deals[nextDealId] = Deal({
             driver: msg.sender,  // corrected from diver to driver
             carId: carId,
