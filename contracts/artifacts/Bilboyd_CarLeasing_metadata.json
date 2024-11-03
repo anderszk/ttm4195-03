@@ -951,11 +951,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0x3879dbbc7203983c4de6ce685a3fa5b0c6863d4653133c148759965bd824a213",
+			"keccak256": "0x2a7a6cff7cc8a281369244c4ce9e455b40b6c4c148fa03c4dc3a79abc1f71de3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://41bb9a2ef944fc15a2ceb0d2c34b14e3ff5ba3593a0911f6aab89029492195ec",
-				"dweb:/ipfs/QmdphQGyvHT5uCDnonPHwBm3CvAqyPiihnKGFCgtQ9DySi"
+				"bzz-raw://357927f10226817552bff5b90902a1dc7707154470992b202762ada4f67ec7a2",
+				"dweb:/ipfs/QmVR2womDj6qEait79eBU9E8KrpqZovtB87vgHZbRhtydH"
 			]
 		}
 	},
