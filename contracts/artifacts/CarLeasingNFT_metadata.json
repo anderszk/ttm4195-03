@@ -16,56 +16,6 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "approved",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Approval",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "ApprovalForAll",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -84,24 +34,6 @@
 				],
 				"name": "Transfer",
 				"type": "event"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "approve",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			},
 			{
 				"inputs": [
@@ -128,19 +60,6 @@
 						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
-					}
-				],
-				"name": "cancelLeaseProposal",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
@@ -158,7 +77,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "computeMonthlyQuotaForProposal",
+				"name": "computeMonthlyQuota",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -167,19 +86,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "confirmLease",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -209,153 +115,32 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getApproved",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
 				"name": "getCarDetails",
 				"outputs": [
 					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "model",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "color",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "yearOfMatriculation",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "originalValue",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "currentMileage",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct CarLeasingNFT.Car",
-						"name": "",
-						"type": "tuple"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "getLeaseDetails",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "tokenId",
-								"type": "uint256"
-							},
-							{
-								"internalType": "address",
-								"name": "lessee",
-								"type": "address"
-							},
-							{
-								"internalType": "uint256",
-								"name": "driverExperience",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "mileageCap",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "contractDuration",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "isActive",
-								"type": "bool"
-							},
-							{
-								"internalType": "uint256",
-								"name": "deposit",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "lastPaymentTime",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "paymentDueDate",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "monthlyQuota",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct CarLeasingNFT.LeaseAgreement",
-						"name": "",
-						"type": "tuple"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "ownerAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "model",
+						"type": "string"
 					},
 					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					}
-				],
-				"name": "isApprovedForAll",
-				"outputs": [
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
 					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
+						"internalType": "uint256",
+						"name": "yearOfMatriculation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "originalValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentMileage",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -364,18 +149,10 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "makeMonthlyPayment",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
 					{
 						"internalType": "string",
 						"name": "model",
@@ -446,65 +223,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "driverExperience",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "mileageCap",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "contractDuration",
-						"type": "uint256"
-					}
-				],
-				"name": "proposeLease",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "repossessCar",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "setApprovalForAll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "symbol",
 				"outputs": [
@@ -515,47 +233,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "transferFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newMileage",
-						"type": "uint256"
-					}
-				],
-				"name": "updateMileage",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -587,11 +264,11 @@
 	},
 	"sources": {
 		"contracts/_BilboydLeasing.sol": {
-			"keccak256": "0xdc44abfb3c3c0deeee2483ab96fffbf17d1083bf316009df60ac0fc5ec2e5470",
+			"keccak256": "0x132488c39bafbdb4ec1825424b558962fbdc78927f15aeb6986b9b77b7ce8857",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c854e7613aa025fa6903b30b92456ecd7a5b3f12f9cc0873245bf4851e5235f4",
-				"dweb:/ipfs/QmQDX56efTmSNkZCj3EUBL4Pa6uPF8AyQ1exuYsN4gCMV6"
+				"bzz-raw://ef60cd3f1001e926ee54951397aef1faa8136ad95c8dc61c9adbc60684e1198d",
+				"dweb:/ipfs/QmfYp326aNa2ueuwgEpqwKPY6aiqfmN3uwR7RfAMPesFEV"
 			]
 		}
 	},
