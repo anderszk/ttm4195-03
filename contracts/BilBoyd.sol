@@ -101,34 +101,43 @@ contract CarLeasingNFT is ERC721, Ownable {
 
     // Function to register a leasing deal
 // Function to register a leasing deal
- function registerDeal(
+     function registerDeal(
         uint256 tokenId,
         uint256 driverExperience,
         uint256 mileageCap,
         uint256 contractDuration,
         uint256 estimatedMileage
     ) public payable {
+        // Ensure the payment is valid
         require(msg.value > 0, "Payment must be greater than zero");
-        require(ownerOf(tokenId) != address(0), "Token ID does not exist");
 
+        // Ensure the car exists and is available for leasing (lessee should be address(0))
+        require(ownerOf(tokenId) != address(0), "Token ID does not exist");
+        Deal storage currentDeal = deals[tokenId];
+        require(currentDeal.lessee == address(0), "Deal already exists!");
+
+        // Compute the monthly quota for the lease based on the provided parameters
         uint256 monthlyQuota = computeMonthlyQuotaForProposal(tokenId, driverExperience, mileageCap, contractDuration, estimatedMileage);
+        
+        // Down payment should be 3 months' worth of quota, plus the first month's quota
         uint256 downPayment = monthlyQuota * 3;
+        
+        // Ensure the user has paid enough for the down payment and the first month
         require(msg.value >= downPayment + monthlyQuota, "Insufficient payment for down payment and first month");
 
+        // Now, register the deal for the car
         deals[tokenId] = Deal({
             tokenId: tokenId,
-            lessee: msg.sender,
+            lessee: msg.sender,  // The person leasing the car
             driverExpierience: driverExperience,
             totalPaid: msg.value,
             confirmedByBilBoyd: false,
             monthlyQuota: monthlyQuota,
-            nextPaymentDue: block.timestamp + 30 days,
-            contractEndDate: block.timestamp + (contractDuration * 30 days), // Set end date based on contract duration
+            nextPaymentDue: block.timestamp + 30 days,  // Next payment is due in 30 days
+            contractEndDate: block.timestamp + (contractDuration * 30 days),  // Contract end date
             contractDuration: contractDuration
         });
     }
-
-
 
     // Function for BilBoyd to confirm the deal
     function confirmDeal(uint256 tokenId) public onlyOwner {
@@ -136,7 +145,6 @@ contract CarLeasingNFT is ERC721, Ownable {
         
         deals[tokenId].confirmedByBilBoyd = true;
     }
-    event FundsWithdrawn(uint256 tokenId, uint256 amount, address to);
     // Function for the owner to withdraw the funds after confirmation
     function withdrawFunds(uint256 tokenId) public onlyOwner {
         require(deals[tokenId].confirmedByBilBoyd, "Deal not confirmed by BilBoyd");
@@ -146,8 +154,6 @@ contract CarLeasingNFT is ERC721, Ownable {
         deals[tokenId].totalPaid = 0; // Reset total paid after withdrawal
 
         payable(owner()).transfer(amountToWithdraw);
-
-        emit FundsWithdrawn(tokenId, amountToWithdraw, owner());
     }
 
     function makeMonthlyPayment(uint256 tokenId) public payable {
@@ -192,7 +198,8 @@ contract CarLeasingNFT is ERC721, Ownable {
     function extendLease(uint256 tokenId, uint256 estimatedMileage, uint256 mileageCap) public {
         Deal storage deal = deals[tokenId];
         require(deal.lessee == msg.sender, "Only the lessee can extend the lease");
-        require(block.timestamp >= deal.contractEndDate, "Lease period not yet completed");
+        require(deal.confirmedByBilBoyd,"Contract is not confirmed");
+        //require(block.timestamp >= deal.contractEndDate, "Lease period not yet completed");
 
         // Recompute monthly quota for extension
         uint256 newExpierience = deal.driverExpierience + deal.contractDuration;
@@ -204,8 +211,9 @@ contract CarLeasingNFT is ERC721, Ownable {
     function signNewLease(uint256 oldTokenId, uint256 newTokenId, uint256 newDriverExperience, uint256 newMileageCap, uint256 newContractDuration, uint256 newEstimatedMileage) public payable {
         Deal storage oldDeal = deals[oldTokenId];
         require(oldDeal.lessee == msg.sender, "Only the lessee can sign a new lease");
-        require(block.timestamp >= oldDeal.contractEndDate, "Old lease period not yet completed");
-
+        //require(block.timestamp >= oldDeal.contractEndDate, "Old lease period not yet completed");
+        Deal storage newDeal = deals[newTokenId];
+        require(newDeal.lessee == address(0), "New car is already leased");
         // Terminate old lease
         oldDeal.lessee = address(0);
         _transfer(owner(), ownerOf(oldTokenId), oldTokenId);

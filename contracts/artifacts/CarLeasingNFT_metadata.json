@@ -189,31 +189,6 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					}
-				],
-				"name": "FundsWithdrawn",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "previousOwner",
@@ -1215,11 +1190,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0xc6ff53aca0230d7d398971fbda974b8954b4d1d452227948469b623853db7517",
+			"keccak256": "0xd16b67a0c859be8ee56fd6917a9e4f8288ac7fecc1674c9f67c2c3c8242442e9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://100b9bee1faada0cbc6135f985be0b325ddeaade0dd84e64e8680618cf278e26",
-				"dweb:/ipfs/QmTUHcTb31hgrCew4HwN1m5yPZ4SLzU6qceWvA4mRxb1Ei"
+				"bzz-raw://6db9eb17206f69e844c9e76ebd84e2bf659f15ea1890f9fc77a5f39005d44dc5",
+				"dweb:/ipfs/QmaUbY93xCKCvtHR5PQPJanu6LHuPaN2mpoYmAAq1ort46"
 			]
 		}
 	},
