@@ -504,7 +504,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "carId",
+						"name": "tokenId",
 						"type": "uint256"
 					}
 				],
@@ -555,25 +555,6 @@
 					}
 				],
 				"name": "isApprovedForAll",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "isContractEnded",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -749,44 +730,6 @@
 				"name": "setApprovalForAll",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "oldTokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newTokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newDriverExperience",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newMileageCap",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newContractDuration",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newEstimatedMileage",
-						"type": "uint256"
-					}
-				],
-				"name": "signNewLease",
-				"outputs": [],
-				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -1190,11 +1133,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0xd16b67a0c859be8ee56fd6917a9e4f8288ac7fecc1674c9f67c2c3c8242442e9",
+			"keccak256": "0x62770c8b6102a2d280ca1ca588b3c2b45e48d29024026909585e748429c7a304",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6db9eb17206f69e844c9e76ebd84e2bf659f15ea1890f9fc77a5f39005d44dc5",
-				"dweb:/ipfs/QmaUbY93xCKCvtHR5PQPJanu6LHuPaN2mpoYmAAq1ort46"
+				"bzz-raw://c012c68dc1ef87ff944cb17c0a5f1ec6a1ccddac0795a74483e0eb513fd1ec36",
+				"dweb:/ipfs/QmQncPqCxYLy5PtBY93xPaCCs98xYXUzqNh53pS68YkWJD"
 			]
 		}
 	},
