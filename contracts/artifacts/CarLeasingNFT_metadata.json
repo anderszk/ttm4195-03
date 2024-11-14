@@ -189,6 +189,31 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "FundsWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "previousOwner",
@@ -306,6 +331,19 @@
 						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
+					}
+				],
+				"name": "checkOverdue",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
@@ -342,6 +380,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "confirmDeal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_model",
 						"type": "string"
@@ -370,6 +421,88 @@
 						"type": "uint256"
 					}
 				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "deals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "lessee",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "driverExpierience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalPaid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "confirmedByBilBoyd",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "monthlyQuota",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nextPaymentDue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contractEndDate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contractDuration",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "estimatedMileage",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mileageCap",
+						"type": "uint256"
+					}
+				],
+				"name": "extendLease",
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -458,6 +591,38 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "isContractEnded",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "makeMonthlyPayment",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "name",
 				"outputs": [
@@ -500,6 +665,39 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "driverExperience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "mileageCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "contractDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "estimatedMileage",
+						"type": "uint256"
+					}
+				],
+				"name": "registerDeal",
+				"outputs": [],
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -581,6 +779,44 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "oldTokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newTokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newDriverExperience",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newMileageCap",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newContractDuration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newEstimatedMileage",
+						"type": "uint256"
+					}
+				],
+				"name": "signNewLease",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -608,6 +844,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "terminateLease",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -661,6 +910,19 @@
 					}
 				],
 				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawFunds",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -953,11 +1215,11 @@
 			]
 		},
 		"contracts/BilBoyd.sol": {
-			"keccak256": "0x35cc9520d704f6c8cda99952afb6a0a38e884278fdc0ded9710479fb456bacf1",
+			"keccak256": "0xc6ff53aca0230d7d398971fbda974b8954b4d1d452227948469b623853db7517",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b9ed609cae475ef26dab923e51735f7dc9796787167a11b831daf9458a7e25d3",
-				"dweb:/ipfs/QmdNwhMuMKEQnD4eJ9aU7dEzUiD78GsyzYuazYpFUdWuY6"
+				"bzz-raw://100b9bee1faada0cbc6135f985be0b325ddeaade0dd84e64e8680618cf278e26",
+				"dweb:/ipfs/QmTUHcTb31hgrCew4HwN1m5yPZ4SLzU6qceWvA4mRxb1Ei"
 			]
 		}
 	},
